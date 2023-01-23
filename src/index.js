@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-], {basename: "/GoodFood"});
+], {basename: "/GoodFood"})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
