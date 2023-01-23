@@ -20,20 +20,20 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: "signin",
+        path: "signin/",
         element: <FormLog />,
       },
       {
-        path: "signup",
+        path: "signup/",
         element: <FormReg />,
       },
       {
-        path: "products",
+        path: "products/",
         element: <Products />,
       },
     ],
   },
-]);
+], { basename: "/GoodFood" });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
