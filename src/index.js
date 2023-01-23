@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-				path: "/",
+				path: "",
         index: "true",
         element: <Main />,
       },
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-], { basename: "/good-food" });
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
