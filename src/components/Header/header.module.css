@@ -1,0 +1,41 @@
+.wr {
+	width: 1300px;
+	height: 100px;
+	margin: auto;
+	background-color: rgb(51, 150, 92);
+	gap: 16px;
+}
+
+.headerMenu {
+	list-style: none;
+	font-family: 'Philosopher', sans-serif;
+  font-weight: 500px;
+  font-size: 18px;
+  line-height: 32px;
+	display: flex;
+	align-items: center;
+	padding-top: 17px;
+	gap: 16px;
+}
+
+.headerMenu li:nth-last-child(4) {
+  font-size: 40px;
+}
+
+.headerMenu li:nth-child(3) {
+  margin-left: 660px;
+}
+
+.wr i {
+	color: white;
+	font-size: 60px;
+}
+
+.headerMenu a {
+	text-decoration: none;
+	color: white;
+}
+
+.activeLink {
+	color: black;
+}

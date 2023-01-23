@@ -1,0 +1,39 @@
+
+.wr {
+	width: 1300px;
+	height: 120px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: auto;
+	background-color: rgb(51, 150, 92);
+}
+
+.footerMenu {
+	list-style: none;
+	font-family: 'Philosopher', sans-serif;
+  font-weight: 500px;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.footerI {
+	color: white;
+	font-size: 50px;
+}
+
+.footerIcons {
+	color: white;
+	font-size: 24px;
+	display: flex;
+	gap: 8px;
+}
+
+.footerMenu a {
+	text-decoration: none;
+	color: white;
+}
+
+.activeLink {
+	color: black;
+}

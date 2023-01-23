@@ -1,0 +1,6 @@
+.box {
+	height: 500px;
+	text-align: center;
+	flex-grow: 1;
+
+}

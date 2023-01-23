@@ -1,0 +1,33 @@
+.wr {
+	width: 1300px;
+	margin: auto;
+	height: 500px;
+}
+
+
+.box {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 500px;
+}
+
+.text {
+	border-radius: 8px;
+	width: 220px;
+	height: 30px;
+	border-color: rgb(51, 150, 92);
+	margin-bottom: 8px;
+}
+
+.btn {
+	font-family: 'Philosopher', sans-serif;
+	background-color: rgb(51, 150, 92);
+	color: white;
+	width: 220px;
+	height: 30px;
+	border-radius: 8px;
+	border-color: transparent;
+	margin-top: 8px;
+}
