@@ -15,6 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+				path: "/",
         index: "true",
         element: <Main />,
       },
@@ -40,5 +41,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-
