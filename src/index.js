@@ -9,31 +9,31 @@ import { Products } from './components/Products/Products';
 import { Main } from './components/Main/Main';
 
 // функция создания роутинга
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-				path: "",
-        index: "true",
-        element: <Main />,
-      },
-      {
-        path: "signin/",
-        element: <FormLog />,
-      },
-      {
-        path: "signup/",
-        element: <FormReg />,
-      },
-      {
-        path: "products/",
-        element: <Products />,
-      },
-    ],
-  },
-], { basename: "/GoodFood" });
+const router = createBrowserRouter(
+	[
+		{
+			path: "/",
+			element: <App />,
+			children: [
+				{
+					index: "true",
+					element: <Main />,
+				},
+				{
+					path: "signin/",
+					element: <FormLog />,
+				},
+				{
+					path: "signup/",
+					element: <FormReg />,
+				},
+				{
+					path: "products/",
+					element: <Products />,
+				},
+			],
+		},
+	], { basename: "/GoodFood"} );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
