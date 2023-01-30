@@ -2,10 +2,10 @@ import * as Yup from "yup";
 
 export const FormValidation = Yup.object({
   email: Yup.string()
-  	.email("Invalid email address")
-	  .required("Required"),
+    .email("Неверный адрес электронной почты")
+    .required("Обязательно"),
   password: Yup.string()
-    .min(5, "Must be 5 characters or more")
-    .max(15, "Must be 10 characters or less")
-    .required("Required"),
+    .min(5, "Должно быть не менее 5 символов")
+    .max(15, "Должно быть не более 10 символов")
+    .required("Обязательно"),
 });

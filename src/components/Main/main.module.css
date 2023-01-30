@@ -1,6 +1,11 @@
 .box {
-	height: 500px;
-	text-align: center;
-	flex-grow: 1;
-
+	min-height: 470px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Philosopher', sans-serif;
+	font-weight: 500px;
+  font-size: 40px;
+  line-height: 32px;
+	color: rgb(51, 150, 92);
 }

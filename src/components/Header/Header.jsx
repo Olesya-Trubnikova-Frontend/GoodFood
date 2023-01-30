@@ -14,6 +14,7 @@ export const Header = () => {
 					<li>
 						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="/">Good Food</NavLink>
 					</li>
+					<input className={headerStyles.input} type="text" placeholder='Искать...'></input>
 					<li>
 						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="products/">Товары</NavLink>
 					</li>
