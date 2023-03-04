@@ -15,3 +15,12 @@ code {
 .error {
 	color: red;
 }
+
+.search_style {
+  border-radius: 8px;
+	border-color: rgb(51, 150, 92);
+	width: 300px;
+	height: 20px;
+  margin-top: 24px;
+  margin-left: 790px;
+}

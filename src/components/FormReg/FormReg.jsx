@@ -1,9 +1,9 @@
 import regStyles from "./formReg.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormValidation } from "../validatop";
-import { useTokenContext } from "../../contexts/TokenContext";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query"
+
 
 // объект для формы
 const initialValues = {
@@ -13,8 +13,6 @@ const initialValues = {
 }
 
 export const FormReg = () => {
-
-	const { setNewToken } = useTokenContext()
 
 	const navigate = useNavigate()
 
@@ -26,9 +24,9 @@ export const FormReg = () => {
 				  "Content-type": "application/json"
 		  	},
 		  	body: JSON.stringify(data)
-	    }).then((res) => res.json()).then((user) => setNewToken(user.token))
-	  }
-)
+				})
+				.then((res) => res.json())
+			})
 
 	const submitHandler = async (values) => {
 
@@ -40,7 +38,7 @@ export const FormReg = () => {
 			<Formik className={regStyles.wr}
 			initialValues={initialValues} 
 			validationSchema={FormValidation}
-			onSubmit={submitHandler}
+			onSubmit={(values) => submitHandler(values)}
 			>
          <Form className={regStyles.box}>
            <Field className={regStyles.text} name="email" placeholder="email" type="text" />

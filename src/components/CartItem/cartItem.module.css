@@ -1,0 +1,56 @@
+.box {
+	width: 300px;
+	border: 2px solid;
+	border-radius: 8px;
+	border-color:rgb(51, 150, 92);
+	padding-bottom: 16px;
+	margin-bottom: 16px;
+} 
+
+.img {
+	width: 170px;
+	height: 170px;
+}
+
+.price {
+	color:rgb(107, 60, 3);
+	font-size: 16px;
+}
+
+.btnBox {
+	display: flex;
+	gap: 16px;
+}
+
+.btn {
+	font-family: 'Philosopher', sans-serif;
+	background-color: rgb(51, 150, 92);
+	color: white;
+	width: 80px;
+	height: 30px;
+	border-radius: 8px;
+	border-color: transparent;
+}
+
+.btnCount {
+	background-color: rgb(51, 150, 92);
+	color: white;
+	width: 30px;
+	height: 30px;
+	border-radius: 8px;
+	border-color: transparent;
+}
+
+.count {
+	margin-top: 5px;
+}
+
+.name {
+	font-family: 'Philosopher', sans-serif;
+	color:rgb(107, 60, 3);
+	font-size: 20px;
+}
+
+.description {
+		font-family: 'Philosopher', sans-serif;
+}

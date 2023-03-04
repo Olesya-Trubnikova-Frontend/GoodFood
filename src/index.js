@@ -5,37 +5,42 @@ import App from './App';
 import { FormLog } from './components/FormLog/FormLog';
 import { FormReg } from "./components/FormReg/FormReg";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Products } from './components/Products/Products';
 import { Main } from './components/Main/Main';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import TokenContextProvider from './contexts/TokenContext';
+import { Cart } from './components/Cart/Cart';
+import { Provider } from "react-redux/es/exports";
+import { store } from "./redux/store";
+import { Cathalog } from './components/Cathalog/Cathalog';
 
 // функция создания роутинга
-const router = createBrowserRouter(
-	[
-		{
-			path: "/",
-			element: <App />,
-			children: [
-				{
-					index: "true",
-					element: <Main />,
-				},
-				{
-					path: "signin/",
-					element: <FormLog />,
-				},
-				{
-					path: "signup/",
-					element: <FormReg />,
-				},
-				{
-					path: "products/",
-					element: <Products />,
-				},
-			],
-		},
-	], {basename: "/GoodFood"});
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: "true",
+        element: <Main />,
+      },
+      {
+        path: "signin/",
+        element: <FormLog />,
+      },
+      {
+        path: "signup/",
+        element: <FormReg />,
+      },
+      {
+        path: "products/",
+        element: <Cathalog />,
+      },
+      {
+        path: "cart/",
+        element: <Cart />,
+      },
+    ],
+  },
+], {basename: "/GoodFood"});
 
 	// регистрируем query-клиент и оборачиваем в него приложение
 const queryClient = new QueryClient({
@@ -50,9 +55,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <TokenContextProvider>
-        <RouterProvider router={router} />
-      </TokenContextProvider>
+      <Provider store={store}>
+          <RouterProvider router={router} />
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );

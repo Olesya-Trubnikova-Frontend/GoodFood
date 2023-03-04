@@ -1,16 +1,47 @@
 import productsStyles from "./products.module.css";
 import { useQuery } from "@tanstack/react-query";
-import { ProductItem } from "../ProductItem/ProductItem"
-import { useTokenContext } from "./../../contexts/TokenContext";
+import  ProductItem  from "../ProductItem/ProductItem"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getTokenSelector } from '../../redux/slices/userSlice'
+import { getSearchSelector } from '../../redux/slices/filterSlice'
+import { getQuerySearchKey } from './utils'
+import withQuery from '../HOCs/withQuery'
+import { DogFoodApiConst } from '../../Api/DogFoodApi'
 
-export const Products = () => {
+function ProductsInner({data}) {
 
-	const { userToken } = useTokenContext()
-	console.log({userToken})
+	const products = data
 
-	const navigate = useNavigate()
+	return (
+			<div className={productsStyles.box}>
+		  	<h1>Наши товары</h1>
+		  	{products[0] && (
+			  	<ul className={productsStyles.text}>
+			  	{products.map((product) => (
+			  	<ProductItem 
+				  	key={product._id}
+						id={product._id}
+				  	pictures={product.pictures}
+				  	name={product.name}
+				  	price={product.price}
+				  	wight={product.wight}
+				  />
+			  	))}
+	      	</ul>
+			)}
+		  </div>
+	)
+}
+
+const ProductsInnerWithQuery = withQuery(ProductsInner)
+
+export const  Products = () => {
+
+  const userToken = useSelector(getTokenSelector)
+	
+  const navigate = useNavigate()
 
 	// при входе на сайт, если нет токена, редирект на регистрацию
 	useEffect(() => {
@@ -19,42 +50,14 @@ export const Products = () => {
 		}
 	}, [userToken])
 
-	const {
-		data, isLoading, isError, error, refetch
-	} = useQuery({
-		queryKey: ["productsfetch"],
-		queryFn: () => fetch("https://api.react-learning.ru/products", {
-			headers: {
-				authorization: `Bearer ${userToken}`,
-			}
-		}).then((res) => {
-			if (res.status >= 400) {
-				throw new Error (`${res.status}: Ошибка при получении товара`)
-			} return res.json()
-		})
-	})
-	console.log({data, isLoading, isError, error, refetch})
+  const search = useSelector(getSearchSelector)
+  const {
+    data, isLoading, isError, error, refetch,
+  } = useQuery({
+    queryKey: getQuerySearchKey(search),
+    queryFn: () => DogFoodApiConst.getAllProducts(search, userToken),
+    enabled: (userToken !== undefined) && (userToken !== ''),
+  })
 
-	const {products} = Object(data)
-
-	console.log("Список продуктов", products)
-
-	return (
-		<div className={productsStyles.box}>
-			<h1>Наши товары</h1>
-			{products && (
-				<ul className={productsStyles.text}>
-				{products.map((product) => (
-				<ProductItem 
-				key={product._id}
-				pictures={product.pictures}
-				name={product.name}
-				price={product.price}
-				wight={product.wight}
-				/>
-				))}
-		</ul>
-			)}
-		</div>
-	)
+  return <ProductsInnerWithQuery data={data} isLoading={isLoading} isError={isError} refetch={refetch} error={error} />
 }

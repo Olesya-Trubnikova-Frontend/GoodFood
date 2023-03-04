@@ -3,7 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormValidation } from "../validatop";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { useTokenContext } from "../../contexts/TokenContext";
+import { useDispatch } from "react-redux";
+import { setNewUser } from '../../redux/slices/userSlice'
+import { cartInitialize } from '../../redux/slices/cartSlice'
+import { DOGFOOD_CART_LS_KEY } from "../../redux/constants";
 
 
 // объект для формы
@@ -14,24 +17,39 @@ const initialValues = {
 
 export const FormLog = () => {
 
-	const { setNewToken } = useTokenContext()
+	const dispatch = useDispatch()
 
 	const navigate = useNavigate()
 
-	// сетевой запрос на вход
-  const {mutateAsync, isLoading} = useMutation({
-	  mutationFn: (data) => fetch("https://api.react-learning.ru/signin", {
-		  	method: "POST",
-		  	headers: {
+
+	const {mutateAsync, isLoading} = useMutation({
+		mutationFn: (data) => fetch("https://api.react-learning.ru/signin", {
+			method: 'POST',
+			headers: {
 				  "Content-type": "application/json"
 		  	},
 		  	body: JSON.stringify(data)
-	    }).then((res) => res.json()).then((user) => setNewToken(user.token)) 
-	  }
-  )
+		})
+		.then((res) => res.json())//забрать ответ от сервера
+		.then((user)=>{
+			const cartFromLS = window.localStorage.getItem(DOGFOOD_CART_LS_KEY)
+
+			if (cartFromLS) {
+          const cartForCurrentUser = JSON.parse(cartFromLS)[user.data_id]
+
+          dispatch(cartInitialize(cartForCurrentUser ?? []))
+      }
+
+			dispatch(setNewUser(user.data._id, user.token, user.data.email))
+			console.log("------------", user.token)
+			console.log("------------", user.data._id)
+			console.log("------------", user.data.email)
+
+		})
+	})
+	
 
 	const submitHandler = async (values) => {
-
 		await mutateAsync(values)
 		setTimeout(() => {navigate("/products")})
 	}
@@ -40,7 +58,7 @@ export const FormLog = () => {
 			<Formik className={logStyles.wr}
 			initialValues={initialValues} 
 			validationSchema={FormValidation}
-			onSubmit={submitHandler}
+			onSubmit={(values) => submitHandler(values)}
 			>
          <Form className={logStyles.box}>
            <Field className={logStyles.text} name="email" placeholder="email" type="text" />
