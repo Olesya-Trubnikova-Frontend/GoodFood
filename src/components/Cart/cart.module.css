@@ -25,6 +25,7 @@
 	height: 30px;
 	border-radius: 8px;
 	border-color: transparent;
+	cursor: pointer;
 }
 
 .info {

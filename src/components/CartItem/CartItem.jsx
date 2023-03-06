@@ -1,13 +1,14 @@
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
-  changeIsPickProduct, deleteProduct, productDecrement, productIncrement,
+  changeIsPickProduct, deleteProduct, getAllCartProductsSelector, productDecrement, productIncrement,
 } from '../../redux/slices/cartSlice'
 import cartItemStyles from "./cartItem.module.css";
 
 function CartItem({
   name, pictures, price, id, description, stock, discount, isPicked, count,
 }) {
+
   const dispatch = useDispatch()
   const deleteProductHandler = () => {
     dispatch(deleteProduct(id))
@@ -16,10 +17,11 @@ function CartItem({
     dispatch(changeIsPickProduct(id))
   }
   const incrementCountHandler = () => {
-    if (count < stock) { dispatch(productIncrement(id)) }
+    if (count < stock) {dispatch(productIncrement(id)) } 
   }
+
   const decrementCountHandler = () => {
-    if (count > 0) { dispatch(productDecrement(id)) }
+    if (count > 0) {dispatch(productDecrement(id)) }
   }
 
   return (
@@ -50,11 +52,11 @@ function CartItem({
           <img src={pictures} className={cartItemStyles.img} alt="product" />
         <div className="">
           <div className={cartItemStyles.btnBox}>
-            <button type="button" className={cartItemStyles.btnCount} onClick={decrementCountHandler}>
+            <button type="button" className={cartItemStyles.btnCount} onClick={decrementCountHandler} disabled={!count}>
               <i class="fa-solid fa-minus"></i>
             </button>
             <h4 className={cartItemStyles.count}>{count}</h4>
-            <button type="button" className={cartItemStyles.btnCount} onClick={incrementCountHandler}>
+            <button type="button" className={cartItemStyles.btnCount} onClick={incrementCountHandler} disabled={count === stock}>
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>

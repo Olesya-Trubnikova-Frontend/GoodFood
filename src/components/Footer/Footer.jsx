@@ -5,7 +5,7 @@ import footerStyles from './footer.module.css'
 export const Footer = () => {
 
 	return (
-		    <header className={footerStyles.wr}>
+		    <footer className={footerStyles.wr}>
 				<div className={footerStyles.footerI}>
 					<i class="fa-solid fa-paw"></i>
 				</div>
@@ -27,6 +27,6 @@ export const Footer = () => {
 					<i class="fa-brands fa-instagram"></i>
 					<i class="fa-brands fa-twitter"></i>
 				</div>
-    </header>
+    </footer>
 	)
 }

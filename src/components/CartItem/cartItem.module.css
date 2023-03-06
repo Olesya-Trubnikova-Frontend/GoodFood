@@ -30,6 +30,7 @@
 	height: 30px;
 	border-radius: 8px;
 	border-color: transparent;
+	cursor: pointer;
 }
 
 .btnCount {
@@ -39,6 +40,11 @@
 	height: 30px;
 	border-radius: 8px;
 	border-color: transparent;
+	cursor: pointer;
+}
+
+.btnCount:disabled {
+	background-color: rgb(170, 155, 161);
 }
 
 .count {
