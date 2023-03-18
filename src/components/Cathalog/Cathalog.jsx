@@ -7,7 +7,7 @@ export const Cathalog = () => {
   return (
     <div style={{ }}>
       <Search />
-      {/* <Filters /> */}
+      <Filters />
       <Products />
     </div>
   )

@@ -87,8 +87,7 @@ const {
                 Очистить
               </button>
             </div>
-            <ul
-              className>
+            <ul>
               {cartProducts.map((item) => (
                 <CartItem
                   key={item._id}

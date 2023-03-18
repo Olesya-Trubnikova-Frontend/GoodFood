@@ -13,6 +13,7 @@ import { DogFoodApiConst } from '../../Api/DogFoodApi'
 function ProductsInner({data}) {
 
 	const products = data
+	console.log(data)
 
 	return (
 			<div className={productsStyles.box}>
@@ -20,7 +21,7 @@ function ProductsInner({data}) {
 		  	{products[0] && (
 			  	<ul className={productsStyles.text}>
 			  	{products.map((product) => (
-			  	<ProductItem 
+			  	<ProductItem className={productsStyles.id}
 				  	key={product._id}
 						id={product._id}
 				  	pictures={product.pictures}
@@ -29,7 +30,7 @@ function ProductsInner({data}) {
 				  	wight={product.wight}
 				  />
 			  	))}
-	      	</ul>
+	      </ul>
 			)}
 		  </div>
 	)

@@ -1,43 +1,28 @@
 import { useSearchParams } from 'react-router-dom'
-import styles from './filter.module.css'
 
-const FILTERS = ['Price', 'Sales', 'New', 'Date']
+import { FILTER_QUERY_NAME, PRICE_FILTER, SALES_FILTER } from '../constans'
+import { FilterItem } from '../FilterItem/FilterItem'
+
+const FILTERS = [PRICE_FILTER, SALES_FILTER]
 
 export function Filters() {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const clickFilterHandler = (filterName) => {
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      filterName,
-    })
+  const clickFilterHandler = (filterType, isActive) => {
+    if (!isActive) searchParams.delete(FILTER_QUERY_NAME)
+    else searchParams.set(FILTER_QUERY_NAME, filterType)
+    setSearchParams(searchParams)
   }
 
   return (
     <div>
-      {FILTERS.map((filterName) => (
+      {FILTERS.map((filter) => (
         <FilterItem
-          key={filterName}
+          key={filter.name}
+          {...filter}
           clickFilterHandler={clickFilterHandler}
-          filterName={filterName}
         />
       ))}
     </div>
-  )
-}
-
-export function FilterItem({ filterName, clickFilterHandler }) {
-  const [searchParams] = useSearchParams()
-
-  const currentFilterName = searchParams.get('filterName')
-
-  return (
-    <button
-      type="button"
-      className={filterName === currentFilterName ? styles.active : ''}
-      onClick={() => clickFilterHandler(filterName)}
-    >
-      {filterName}
-    </button>
   )
 }

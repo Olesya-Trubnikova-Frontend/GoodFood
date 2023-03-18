@@ -9,7 +9,6 @@ const withQuery = (WrappedComponent) =>
           <p>Error happend: {error.message}</p>
           <button
             type="button"
-            className="btn btn-primary mx-3"
             onClick={refetch}
           >
             Повторить

@@ -41,10 +41,19 @@ class DogFoodApi {
         `${response.status}: Произошла ошибка при получении информации о товарах. Попробуйте сделать запрос позже.`
       );
     }
-
     return response.json();
   }
+
+  async getUserByToken(token) {
+    const res = await fetch(`${this.baseURL}/v2/sm9/users/me`, {
+      headers: {
+        authorization: this.getAuthorizationToken(token),
+      },
+    });
+    return res.json();
+  }
 }
+
 export const DogFoodApiConst = new DogFoodApi({
   baseUrl: "https://api.react-learning.ru",
 });

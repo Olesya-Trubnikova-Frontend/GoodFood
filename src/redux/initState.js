@@ -2,14 +2,18 @@ import { DOGFOOD_LS_KEY } from "./constants";
 
 export const initState = {
   user: {
-    group: "",
+    group: "sm9",
     email: "",
     token: "",
+    name: "",
+    about: "",
+    avatar: "",
   },
   cart: [],
   filter: {
     search: "",
   },
+  favorites: [],
 };
 
 export const getInitState = () => {

@@ -18,12 +18,8 @@
 	gap: 16px;
 }
 
-.headerMenu li:nth-last-child(5) {
-  font-size: 40px;
-}
-
-.headerMenu li:nth-child(3) {
-  margin-left: 580px;
+.headerMenu li:nth-last-child(7) { 
+  margin-right: 420px;
 }
 
 .wr i {
@@ -36,6 +32,7 @@
 	color: white;
 }
 
-.activeLink {
-	color: black;
+.logo {
+	font-size: 40px;
 }
+

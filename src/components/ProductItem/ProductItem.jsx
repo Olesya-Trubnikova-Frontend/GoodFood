@@ -2,6 +2,11 @@
 import productStyles from "./productItem.module.css";
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewProduct, deleteProduct, getAllCartProductsSelector } from '../../redux/slices/cartSlice'
+import {
+  addFavorite,
+  getAllFavoriteProductsSelector,
+  removeFavorite,
+} from '../../redux/slices/favorite'
 
 function ProductItem ({
 	id,
@@ -11,6 +16,8 @@ function ProductItem ({
 	wight
 }) {
 	const cartProducts = useSelector(getAllCartProductsSelector)
+
+	 const favorites = useSelector(getAllFavoriteProductsSelector)
 
 	const dispatch = useDispatch()
 
@@ -32,8 +39,14 @@ function ProductItem ({
 					<p className={productStyles.price}>{price}</p>
 					<p className={productStyles.wight}>{wight}</p>
 					<span>{id}</span>
-					<i class="fa-regular fa-heart"></i>
-					<i class="fa-regular fa-comment"></i>
+
+					{favorites.includes(id) && (
+				    <i className="fa-solid fa-heart" onClick={() => { dispatch(removeFavorite(id)) }}></i>
+					)}
+					{!favorites.includes(id) && (
+	         <i className="fa-regular fa-heart" onClick={() => { dispatch(addFavorite(id)) }}></i>
+					)}
+					 <i className="fa-regular fa-comment"></i>
 
 					<button
 					className={productStyles.btn}

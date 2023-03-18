@@ -11,6 +11,8 @@ import { Cart } from './components/Cart/Cart';
 import { Provider } from "react-redux/es/exports";
 import { store } from "./redux/store";
 import { Cathalog } from './components/Cathalog/Cathalog';
+import { Favorite } from './components/Favorite/Favorite';
+import { User } from "./components/User/User";
 
 // функция создания роутинга
 const router = createBrowserRouter([
@@ -38,9 +40,17 @@ const router = createBrowserRouter([
         path: "cart/",
         element: <Cart />,
       },
+      {
+        path: "favorite/",
+        element: <Favorite />,
+      },
+      {
+        path: "user/",
+        element: <User />,
+      },
     ],
   },
-], {basename: "/GoodFood"});
+], {basename: "/DoodFood"});
 
 	// регистрируем query-клиент и оборачиваем в него приложение
 const queryClient = new QueryClient({

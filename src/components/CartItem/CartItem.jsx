@@ -1,7 +1,7 @@
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
-  changeIsPickProduct, deleteProduct, getAllCartProductsSelector, productDecrement, productIncrement,
+  changeIsPickProduct, deleteProduct, productDecrement, productIncrement,
 } from '../../redux/slices/cartSlice'
 import cartItemStyles from "./cartItem.module.css";
 
@@ -33,31 +33,31 @@ function CartItem({
         {name}
       </h4>
             <div className={cartItemStyles.price}>
-              <h4 className={{}}>
+              <h4>
                 {discount > 0 && `${((price * (100 - discount)) / 100)} ₽`}
                 {discount === 0 && `${price} ₽`}
               </h4>
               {discount > 0 && (
-              <h4 className={{}}>
+              <h4>
                 {price}
                 ₽
               </h4>
               )}
             <p className={cartItemStyles.description}>{description}</p>
-            <p className={{}}>
+            <p>
               В наличии:
               {' '}
               {stock}
             </p>
           <img src={pictures} className={cartItemStyles.img} alt="product" />
-        <div className="">
+        <div>
           <div className={cartItemStyles.btnBox}>
             <button type="button" className={cartItemStyles.btnCount} onClick={decrementCountHandler} disabled={!count}>
-              <i class="fa-solid fa-minus"></i>
+              <i className="fa-solid fa-minus"></i>
             </button>
             <h4 className={cartItemStyles.count}>{count}</h4>
             <button type="button" className={cartItemStyles.btnCount} onClick={incrementCountHandler} disabled={count === stock}>
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </button>
           </div>
           <button type="button" className={cartItemStyles.btn} onClick={deleteProductHandler}>Удалить</button>

@@ -1,0 +1,15 @@
+.btn {
+	font-family: 'Philosopher', sans-serif;
+	background-color: rgb(51, 150, 92);
+	color: white;
+	width: 100px;
+	height: 30px;
+	border-radius: 8px;
+	border-color: transparent;
+	cursor: pointer;
+  margin-top: 16px;
+}
+
+.box {
+  text-align: center;
+}

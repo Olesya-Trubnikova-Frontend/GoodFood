@@ -1,0 +1,30 @@
+.wr {
+	width: 1300px;
+  min-height: 470px;
+	margin: auto;
+  text-align: center;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-family: 'Philosopher', sans-serif;
+	background-color: rgb(51, 150, 92);
+	color: white;
+	width: 100px;
+	height: 30px;
+	border-radius: 8px;
+	border-color: transparent;
+	cursor: pointer;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.text {
+  font-family: 'Philosopher', sans-serif;
+	color:rgb(107, 60, 3);
+	font-size: 20px;
+}

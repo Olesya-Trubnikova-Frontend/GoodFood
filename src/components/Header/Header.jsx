@@ -6,12 +6,15 @@ import { getTokenSelector } from '../../redux/slices/userSlice'
 import { getAllCartProductsSelector } from '../../redux/slices/cartSlice'
 import { clearCart } from '../../redux/slices/cartSlice'
 import { logOut } from '../../redux/slices/userSlice'
+import { getAllFavoriteProductsSelector } from '../../redux/slices/favorite'
 
 export const Header = () => {
 
 	const userToken  = useSelector(getTokenSelector)
 
 	const cartProducts = useSelector(getAllCartProductsSelector)
+
+	const favoriteProducts = useSelector(getAllFavoriteProductsSelector)
 
 	const dispatch = useDispatch()
 
@@ -28,25 +31,32 @@ export const Header = () => {
 					<i className="fa-solid fa-dog"></i>
 					</div>
 					<li>
-						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="/">Good Food</NavLink>
+						<NavLink className={headerStyles.logo} to="/">Good Food</NavLink>
 					</li>
 					<li>
-						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="products/">Товары</NavLink>
+						<NavLink className={{}} to="products/">Товары</NavLink>
 					</li>
 					{userToken ? (
 					<li>
-						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} onClick={handleLogOut} to="signin/">Выйти</NavLink>
+						<NavLink className={{}} onClick={handleLogOut} to="signin/">Выйти</NavLink>
 					</li>
 					) : (
 					<li>
-					  <NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="signin/">Войти</NavLink>
+					  <NavLink className={{}} to="signin/">Войти</NavLink>
 					</li>
 					)}
 					<li>
-						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="signup/">Регистрация</NavLink>
+						<NavLink to="signup/">Регистрация</NavLink>
 					</li>
-						<NavLink className={({isActive}) => classNames({[headerStyles.activeLink]: isActive})} to="cart/">
-							<i class="fa-solid fa-basket-shopping"></i>
+						<NavLink to="user/">
+							<i className="fa-regular fa-user"></i>
+						</NavLink>
+				  	<NavLink to="favorite/">
+							<i className="fa-regular fa-heart"></i>
+							<span className={headerStyles.number}>{favoriteProducts.length}</span>
+						</NavLink>
+						<NavLink to="cart/">
+							<i className="fa-solid fa-basket-shopping"></i>
 							<span className={headerStyles.number}>{cartProducts.length}</span>
 						</NavLink>
 				</ul>
