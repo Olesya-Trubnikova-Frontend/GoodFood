@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-], {basename: "/GoogFood"});
+], {basename: "/GoodFood"});
 
 	// регистрируем query-клиент и оборачиваем в него приложение
 const queryClient = new QueryClient({

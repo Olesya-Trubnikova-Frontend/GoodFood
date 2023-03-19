@@ -9,6 +9,7 @@ import { getTokenSelector } from '../../redux/slices/userSlice'
 import { getQueryCartKey } from '../Products/utils'
 import { DogFoodApiConst } from '../../Api/DogFoodApi'
 import cartStyles from "./cart.module.css";
+import { useCallback } from 'react'
 
 
 export const Cart = () => {
@@ -39,9 +40,19 @@ const {
     return allPickedProducts
   }
 
-  const getCartProductById = (idItem) => cartProducts.find((product) => product._id === idItem)
+  const getCartProductById = useCallback((idItem) => {const res = cartProducts.find((product) => product._id === idItem)
+    if (res) {
+      return res
+    }
+    return false
+  }, [cartProducts])
 
-  const getCartStateProductById = (idItem) => cart.find((product) => product.id === idItem)
+  const getCartStateProductById = useCallback((idItem) => {const res = cart.find((product) => product.id === idItem)
+    if (res) {
+      return res
+    }
+    return false
+  }, [cart])
 
   const pickAllProductsHandler = () => {
     if (!isAllCardPicked()) dispatch(pickAllProducts())

@@ -45,11 +45,13 @@ class DogFoodApi {
   }
 
   async getUserByToken(token) {
-    const res = await fetch(`${this.baseURL}/v2/sm9/users/me`, {
+
+    const res = await fetch(`${this.baseUrl}/v2/sm9/users/me`, {
       headers: {
         authorization: this.getAuthorizationToken(token),
       },
     });
+    console.log("getUserByToken", res);
     return res.json();
   }
 }

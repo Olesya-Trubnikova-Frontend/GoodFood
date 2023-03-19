@@ -70,7 +70,7 @@ export function FavoriteItem({
           type="button"
           onClick={removeFavoritesHandler}
         >
-          Убрать
+          Удалить
         </button>
         <button
           className={favoriteItemStyles.btn}

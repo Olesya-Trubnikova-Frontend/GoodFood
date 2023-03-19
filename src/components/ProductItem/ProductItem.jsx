@@ -38,7 +38,7 @@ function ProductItem ({
 					<p className={productStyles.name}>{name}</p>
 					<p className={productStyles.price}>{price}</p>
 					<p className={productStyles.wight}>{wight}</p>
-					<span>{id}</span>
+					{/* <span>{id}</span> */}
 
 					{favorites.includes(id) && (
 				    <i className="fa-solid fa-heart" onClick={() => { dispatch(removeFavorite(id)) }}></i>
